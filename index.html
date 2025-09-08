@@ -161,14 +161,15 @@
       const userId = urlParams.get("userId");
 
       if (userId && secret) {
-        account
-          .updateVerification({ userId, secret })
-          .then((response) => {
-            console.log("Verification successful:", response);
-          })
-          .catch((error) => {
-            console.error("Verification failed:", error);
-          });
+        const promise = updateVerification(userId, secret);
+        promise.then(
+          function (response) {
+            console.log(response); // Success
+          },
+          function (error) {
+            console.log(error); // Failure
+          }
+        );
       } else {
         console.warn("Missing userId or secret in URL");
       }

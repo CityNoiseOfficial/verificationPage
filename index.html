@@ -161,7 +161,7 @@
       const userId = urlParams.get("userId");
 
       if (userId && secret) {
-        const promise = updateVerification(userId, secret);
+        const promise = account.updateVerification(userId, secret);
         promise.then(
           function (response) {
             console.log(response); // Success
